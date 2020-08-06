@@ -18,6 +18,13 @@ class App extends Component{
     .then(response => response.json())
     .then(users => this.setState({monsters:users}))
   }
+
+  // Class Methods written by us
+  handleChange = e =>{
+    this.setState({ searchField: e.target.value})
+
+  };
+
 render(){
 
   const{ monsters , searchField } =  this.state;
@@ -32,8 +39,7 @@ render(){
        
      <SearchBox 
      placeholder='search monsters'
-     handleChange = {e =>
-      this.setState({ searchField: e.target.value})}
+     handleChange = {this.handleChange}
      />
       
        <CardList monsters = {filteredMonsters}  />
